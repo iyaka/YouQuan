@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- DB -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/nature">
+		</property>
+		<property name="username" value="xlock"></property>
+		<property name="password" value="123"></property>
+	</bean>
+
+	<!-- sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/youquan/model/Account.hbm.xml</value>
+				<value>com/youquan/model/ActionLog.hbm.xml</value>
+				<value>com/youquan/model/Comment.hbm.xml</value>
+				<value>com/youquan/model/Essay.hbm.xml</value>
+				<value>com/youquan/model/Laud.hbm.xml</value>
+				<value>com/youquan/model/Love.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 事务管理器配置, Hibernate单数据源事务 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<aop:config>
+		<aop:pointcut id="aopPointcut" expression="execution(* com.youquan.biz..*.*(..))" />
+		<aop:advisor pointcut-ref="aopPointcut" advice-ref="txAdvice" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- DAO -->
+	<bean id="accountDao" class="com.youquan.dao.AccountDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="actionLogDao" class="com.youquan.dao.ActionLogDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="commentDao" class="com.youquan.dao.CommentDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="essayDao" class="com.youquan.dao.EssayDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="laudDao" class="com.youquan.dao.LaudDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="loveDao" class="com.youquan.dao.LoveDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- BIZ -->
+	<bean id="accountBiz" class="com.youquan.biz.AccountBiz">
+		<property name="accountDao">
+			<ref bean="accountDao" />
+		</property>
+	</bean>
+	<bean id="commentBiz" class="com.youquan.biz.CommentBiz">
+		<property name="commentDao">
+			<ref bean="commentDao" />
+		</property>
+	</bean>
+	<bean id="essayBiz" class="com.youquan.biz.EssayBiz">
+		<property name="essayDao">
+			<ref bean="essayDao" />
+		</property>
+		<property name="accountDao">
+			<ref bean="accountDao" />
+		</property>
+	</bean>
+
+	<!-- ACTION -->
+	<bean id="accountAction" class="com.youquan.action.AccountAction">
+		<property name="accountBiz">
+			<ref bean="accountBiz" />
+		</property>
+	</bean>
+	<bean id="commentAction" class="com.youquan.action.CommentAction">
+		<property name="commentBiz">
+			<ref bean="commentBiz" />
+		</property>
+	</bean>
+	<bean id="essayAction" class="com.youquan.action.EssayAction">
+		<property name="essayBiz">
+			<ref bean="essayBiz" />
+		</property>
+	</bean>
+</beans>
