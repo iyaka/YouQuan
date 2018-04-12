@@ -1,0 +1,43 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="xml_root">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="tab_text">
+        <item name="android:layout_marginTop">@dimen/d3</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s10</item>
+        <item name="android:textColor">@drawable/tab_text</item>
+    </style>
+
+    <style name="tab_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/d25</item>
+    </style>
+
+    <style name="divide_min">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/divide</item>
+    </style>
+    <style name="divide_max">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/d10</item>
+        <item name="android:background">@color/divide</item>
+    </style>
+
+</resources>

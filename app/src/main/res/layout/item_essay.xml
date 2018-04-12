@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/d8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d8"
+        android:layout_marginRight="@dimen/d8"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.youquan.custom.RoundImageView
+            android:id="@+id/riv"
+            android:layout_width="@dimen/d50"
+            android:layout_height="@dimen/d50"
+            android:scaleType="centerCrop"
+            imagecontrol:border_inside_color="#FFFFFFFF"
+            imagecontrol:border_outside_color="#FFFF7F00"
+            imagecontrol:border_thickness="1.5dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d5"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d2"
+                android:textColor="@color/main_title_color"
+                android:textSize="@dimen/s16" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d2"
+                android:textColor="@color/main_hint_color"
+                android:textSize="@dimen/d10" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="@dimen/d40"
+            android:layout_height="match_parent"
+            android:padding="@dimen/d5"
+            android:src="@drawable/ic_more" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d8"
+        android:layout_marginRight="@dimen/d8"
+        android:layout_marginTop="@dimen/d5"
+        android:textColor="@color/main_content_color"
+        android:textSize="@dimen/s16" />
+
+    <com.youquan.custom.grid.MyGridView
+        android:id="@+id/myGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d8"
+        android:layout_marginRight="@dimen/d8"
+        android:layout_marginTop="5dp"
+        app:sapcing="4dp" />
+
+    <View
+        style="@style/divide_min"
+        android:layout_marginTop="@dimen/d5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/d12">
+
+            <ImageView
+                android:layout_width="@dimen/d18"
+                android:layout_height="@dimen/d18"
+                android:src="@drawable/ic_essay_laud" />
+
+            <TextView
+                android:id="@+id/tvLaud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d2"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/d12">
+
+            <ImageView
+                android:layout_width="@dimen/d18"
+                android:layout_height="@dimen/d18"
+                android:src="@drawable/ic_essay_comment" />
+
+            <TextView
+                android:id="@+id/tvComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d3"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/d12">
+
+            <ImageView
+                android:layout_width="@dimen/d18"
+                android:layout_height="@dimen/d18"
+                android:src="@drawable/ic_essay_forword" />
+
+            <TextView
+                android:id="@+id/tvForword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d3"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d10"
+        android:background="@color/divide" />
+</LinearLayout>

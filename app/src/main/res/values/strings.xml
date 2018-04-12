@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">有圈</string>
+    <string name="tab_text_home">首页</string>
+    <string name="tab_text_find">发现</string>
+    <string name="tab_text_quan">有圈</string>
+    <string name="tab_text_mine">我的</string>
+
+</resources>
